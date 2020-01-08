@@ -18,8 +18,9 @@ public class mathHomework {
 		{
 			if(questions.get(i)-questions.get(0) == threshold)
 			{
-				minQueCount++; // increment if a que can be attempted
-				break;
+				minQueCount++; // increment if a que can be attempted 
+				//System.out.println("the questions attempted without skipping question : "+questions.get(i));
+				return minQueCount;
 			}
 			else
 			{
@@ -28,11 +29,19 @@ public class mathHomework {
 					if(questions.get(i+1)-questions.get(0) == threshold) // check if we can skip a question
 					{
 						minQueCount++; // increment if a que can be attempted
+						//System.out.println("the questions attempted by skipping question : "+questions.get(i));
+						return minQueCount;
+					}
+					else
+					{
+						minQueCount++; // increase the counter to move to next question
+						//System.out.println("the question attempted is : "+questions.get(i)+",");
+						i++;
 					}
 				}
 				else
 				{
-					System.out.println("there are no ways to achieve threshold");
+					//System.out.println("there are no ways to achieve threshold");
 					return -1;
 				}
 			}
@@ -48,6 +57,7 @@ public class mathHomework {
 		list.add(10);
 		list.add(18);
 		list.add(22);
+		list.add(25);
 		mathHomework m = new mathHomework();
 		System.out.println("the min no. of questions to solve : "+m.questionsToSolve(1,list));
 	}
